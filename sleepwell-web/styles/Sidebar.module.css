@@ -1,0 +1,9 @@
+.sidebarPanel {
+    width: 200px;
+    background: blueviolet;
+    height: 100%;
+}
+
+.leftNavWrapper {
+    display: flex;
+}

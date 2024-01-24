@@ -1,0 +1,129 @@
+.tips {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 1em;
+}
+
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: disc;
+  padding: 0 1em;
+  margin-left: 20%;
+}
+
+.tips-shown {
+  display: block;
+  font-size: 1.5rem; 
+}
+
+.tips-title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 77%;
+}
+
+.tips-title:hover {
+  background-color: #161415;
+}
+
+.image-tips {
+  display: flex
+}
+
+.column-images {
+  flex: 50%;
+  padding: 5%;
+}
+
+#sleep-img {
+  padding-top: 44px;
+}
+
+#sex-img {
+  padding-top: 95px;
+}
+
+.verification {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.verification-message {
+  font-size: 25px;
+  text-align: center;
+}
+
+.send-verification-btn{
+  padding-left: 15%;
+  padding-right: 15%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+.verificationCSS {
+  margin: 0.25rem; /* Equivalent to m-1 in Tailwind */
+  border-radius: 0.375rem; /* Equivalent to rounded-md in Tailwind */
+  background-color: #70608a; /* Replace with the actual color code */
+  padding: 0.5rem; /* Equivalent to p-2 in Tailwind */
+}
+
+
+@media (max-width: 600px) {
+  .tips-list {
+    margin-left: 0;
+  }
+
+  .verification {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+li {
+  padding-bottom: 10px;
+}
+
+.tips-header {
+  margin-top: 5%;
+}
+
+.question-title {
+  padding-bottom: 100px;
+}
+
+.morning-title {
+  padding-bottom: 100px;
+}
+
+.warning {
+  color: #e6625e;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  font-size: 26px;
+}
+
+.warningIcon {
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+.learnMore {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+  color: #e6625e;
+  text-decoration: underline;
+  font-size: 26px;
+}

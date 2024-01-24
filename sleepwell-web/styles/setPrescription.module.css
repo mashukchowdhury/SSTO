@@ -1,0 +1,11 @@
+.container {
+    max-width: 100%;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+}

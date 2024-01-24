@@ -1,0 +1,42 @@
+.feedbackContainer {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .questionBlock {
+    margin: 20px 0;
+    font-size: 1rem;
+  }
+  
+  .stepContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .stepTitle {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 2.5rem;
+  }
+  
+  .textInputContainer {
+    margin-top: 2.5rem;
+  }
+  
+  .textInput {
+    font-size: 1.25rem;
+  }
+  
+  .thankYouTitle {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-top: 20rem;
+  }
+  .buttonContainer {
+    display: flex;
+    justify-content: flex-end; 
+    padding: 1rem;
+  }

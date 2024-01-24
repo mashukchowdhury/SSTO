@@ -1,0 +1,37 @@
+
+.MuiClock-squareMask {
+  background-color: #9C8BB8 !important;
+  border-radius: 50% !important;
+}
+
+.MuiClock-root {
+  margin: 16px 0 16px 0 !important;
+}
+
+.MuiClock-pin {
+  background-color: #473356 !important;
+}
+
+.MuiClockPointer-root {
+  background-color: black !important;
+}
+
+.MuiClockPointer-thumb {
+  border: 16px solid #473356 !important;
+  background-color: #473356 !important;
+}
+
+.MuiOutlinedInput-input {
+  font-size: 1.4rem !important;
+  color: #9C8BB8 !important;
+  font-weight: bold !important;
+}
+
+.MuiInputLabel-root{
+  color: #9C8BB8 !important;
+  font-weight: bold !important;
+}
+
+.MuiOutlinedInput-notchedOutline{
+  color: #9C8BB8 !important;
+}

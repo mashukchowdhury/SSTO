@@ -1,0 +1,71 @@
+# Define the stages in the CI/CD pipeline. These stages will be executed in order.
+stages:
+  - build
+  - build_and_deploy
+
+# Build stage configuration
+build:
+  stage: build
+  image: node:18.7.0-alpine
+  cache:
+    paths:
+      - sleepwell-web/node_modules/
+  script:
+    - cd sleepwell-web
+    - npm install
+    - npm run build
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "main"'
+    # The 'build' stage will only run if the branch is not "Dev-Add-ci.yml-file."
+
+# Build and Deploy stage configuration
+build_and_deploy:
+  stage: build_and_deploy
+  image: node:18.7.0-alpine
+  cache:
+    paths:
+      - sleepwell-web/node_modules/
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends openssh-client
+    # This installs the 'openssh-client' package required for SSH operations.
+  script:
+    - cd sleepwell-web
+    - npm install
+    - npm run build
+    - cd ../
+    - tar -czf sleepwell-web.tar.gz sleepwell-web
+    # Compresses the 'sleepwell-web' directory into a tar.gz archive.
+
+    # The following commands set up SSH, copy the application files to the server,
+    # and start the application using pm2 process manager.
+    - 'which ssh-agent || (apk update && apk add openssh-client)'
+    - eval $(ssh-agent -s)
+    - chmod 600 digital_ocean_ssh_key
+    # Set necessary permissions for the SSH key file.
+    - ssh-add digital_ocean_ssh_key
+    # Add the private SSH key to the ssh-agent.
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    # Configure SSH options for the server to skip strict host key checking.
+
+    # Execute commands on the remote server via SSH to deploy the application.
+    
+    - ssh -i digital_ocean_ssh_key root@app.mysleepwell.ca "pm2 stop 'Sleepwell App'"
+    - ssh -i digital_ocean_ssh_key root@app.mysleepwell.ca "cd /var/www/app.mysleepwell.ca && rm -r sleepwell-web && rm -r sleepwell-web.tar.gz"
+
+    # Copy the tar.gz archive to the server.x
+    - scp -i digital_ocean_ssh_key sleepwell-web.tar.gz root@app.mysleepwell.ca:/var/www/app.mysleepwell.ca
+
+    # Extract the archive on the server.
+    - ssh -i digital_ocean_ssh_key root@app.mysleepwell.ca 'cd /var/www/app.mysleepwell.ca && tar -xzf sleepwell-web.tar.gz'
+    
+    # Change directory to 'sleepwell-web' and start the application using pm2.
+    - ssh -i digital_ocean_ssh_key root@app.mysleepwell.ca "cd /var/www/app.mysleepwell.ca/sleepwell-web && pm2 start npm --name 'Sleepwell App' -- start"
+
+    # Save the current pm2 process list to automatically start them on server restart.
+    - ssh -i digital_ocean_ssh_key root@app.mysleepwell.ca 'pm2 save'
+    # Test and Reload Nginx to ensure the latest configuration is applied
+    - ssh -i digital_ocean_ssh_key root@app.mysleepwell.ca 'nginx -t && systemctl reload nginx'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    # The 'build_and_deploy' stage will only run if the branch is "Dev-Add-ci.yml-file."

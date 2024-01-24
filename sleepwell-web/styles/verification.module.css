@@ -1,0 +1,7 @@
+.verificationCSS {
+    margin: 0.25rem; /* Equivalent to m-1 in Tailwind */
+    border-radius: 0.375rem; /* Equivalent to rounded-md in Tailwind */
+    background-color: var(--swDarkenedPurple); /* Replace with the actual color code */
+    padding: 0.5rem; /* Equivalent to p-2 in Tailwind */
+  }
+  

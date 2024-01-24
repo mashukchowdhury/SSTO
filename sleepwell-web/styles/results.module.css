@@ -1,0 +1,12 @@
+.statisticsBox {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    background-color: #4f46e5; 
+}
+  
+  .statisticsTitle {
+    margin: 1rem auto;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }

@@ -1,0 +1,46 @@
+.container {
+    margin: auto;
+    padding: 8px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    width: 100%;
+    padding: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: calc(100% - 1rem);
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.warning {
+    color: red; 
+    margin: 10px 0;
+    font-size: 16px; 
+    display: flex;
+    align-items: center; 
+}
+
+.warningIcon {
+    margin-right: 10px; 
+    font-size: 24px; 
+}
+
+.learnMoreButton {
+    background-color: blue; 
+    color: white; 
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    margin-top: 15px; 
+}
+
+.learnMoreButton:hover {
+    background-color: darkblue;
+}
+
